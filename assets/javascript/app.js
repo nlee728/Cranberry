@@ -6,6 +6,20 @@ function show(time) {
 }
 show(moment().format("MM DD, YYYY hh:mm:ss"));
 
+//WEATHER
+var weather = require("weather-js");
+
+// Then we use the package to search for the weather at a location
+weather.find({ search: "Durham, NC", degreeType: "F" }, function(err, result) {
+
+  if (err) {
+    console.log(err);
+  }
+
+  var weatherData = JSON.stringify(result, null, 2);
+  $('#weather').append(`<p>${weatherData}</p>`);
+});
+
 //PROFILE FORM
  // Capture Button Click
   $("#add-user").on("click", function(event) {
@@ -50,22 +64,15 @@ show(moment().format("MM DD, YYYY hh:mm:ss"));
 //TO DO LIST
   var list = JSON.parse(localStorage.getItem("todolist"));
 
-    // Checks to see if the todolist exists in localStorage and is an array currently
-    // If not, set a local list variable to an empty array
-    // Otherwise list is our current list of todos
     if (!Array.isArray(list)) {
       list = [];
     }
 
     function putOnPage() {
-
       $("#todo-list").empty(); // empties out the html
 
       var insideList = JSON.parse(localStorage.getItem("todolist"));
 
-      // Checks to see if we have any todos in localStorage
-      // If we do, set the local insideList variable to our todos
-      // Otherwise set the local insideList variable to an empty array
       if (!Array.isArray(insideList)) {
         insideList = [];
       }
