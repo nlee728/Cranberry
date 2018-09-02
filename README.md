@@ -1,2 +1,2 @@
-# tonicity
-Tonicity Fitness Tracker
+# Cranberry
+Cranberry Fitness Tracker
