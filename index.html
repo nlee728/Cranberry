@@ -24,6 +24,7 @@
          <ul class="nav align-items-center">
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                <div id="name-display"></div>
            </li>
            <li class="nav-item">
                  <a class="nav-link" href="index.html"><i class="fas fa-home"></i></a>
@@ -41,20 +42,20 @@
                   <form class="modal-content">
                     <div class="popup container">
                       <h1>Login</h1>
-                      <hr>
-                      <label for="username"><b>Username</b></label>
-                      <input type="text" placeholder="username" id="username" required>
-
-                      <label for="email"><b>Email</b></label>
-                      <input type="text" placeholder="your.name@email.com" name="email" id="email">
-
-                      <label for="pw"><b>Password</b></label>
-                      <input type="text" placeholder="**********" name="pw" id="pw" required>
-                      
-                      
-                      <div class="clearfix">
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                        <button type="submit" class="addbtn" id="submit">Add</button>
+              <hr>
+              <label for="username"><b>Username</b></label>
+              <input type="text" placeholder="username" id="username-input" required>
+        
+              <label for="email"><b>Email</b></label>
+              <input type="text" placeholder="your.name@email.com" name="email" id="email-input">
+        
+              <label for="pw"><b>Password</b></label>
+              <input type="text" placeholder="**********" name="pw" id="pw-input" required>
+              
+              
+              <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="addbtn" id="login-btn">Login</button>
                       </div>
                     </div>
                   </form>
@@ -72,8 +73,8 @@
           <div class="col-md-1"></div>
           <div class="col-md-4" id="clock"></div>
           <div class="col-md-3" id="weather"></div>
-        <div class="col-md-3" id="progress-bar">
-            loading...
+        <div class="col-md-3" id="myProgress">
+          <div id="myBar">10%</div>
         </div>
         <!-- PopUp Add Workout Form -->
         <div class="col-md-1">
@@ -82,21 +83,21 @@
           <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
           <form class="modal-content">
             <div class="popup container">
-              <h1>Login</h1>
+              <h1>Add Workout</h1>
               <hr>
               <label for="username"><b>Username</b></label>
-              <input type="text" placeholder="username" id="username" required>
+              <input type="text" placeholder="username" id="username-input" required>
         
               <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="your.name@email.com" name="email" id="email">
+              <input type="text" placeholder="your.name@email.com" name="email" id="email-input">
         
               <label for="pw"><b>Password</b></label>
-              <input type="text" placeholder="**********" name="pw" id="pw" required>
+              <input type="text" placeholder="**********" name="pw" id="pw-input" required>
               
               
               <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="addbtn" id="submit">Add</button>
+                <button type="submit" class="addbtn" id="add-workout-btn">Add</button>
               </div>
             </div>
           </form>
@@ -110,15 +111,15 @@
          <div class="row" >
             <div class="col-md-2"></div>
                 <div class="col-md-4 card">
-                    <a href="./stats.html">
+                    <a href="stats.html">
                       <img class="card-img" src="./assets/images/scale.png" alt="stats">
                     </a>
                     <div class="card-img-overlay">
                       <h5 class="card-title">Stats</h5>
                     </div>
                 </div>
-                <div class="col-md-4 card">
-                      <a href="./workouts.html">
+                <div class="col-md-4 card" href="workouts.html">
+                      <a>
                         <img class="card-img" src="./assets/images/shoes.png" alt="workouts">
                       </a>
                         <div class="card-img-overlay">
@@ -129,7 +130,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                     <div class="col-md-4 card">
-                        <a href="./meals.html">
+                        <a href="meals.html">
                             <img class="card-img" src="./assets/images/apple.png" alt="meals">
                            </a>
                             <div class="card-img-overlay">
@@ -137,7 +138,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 card">
-                            <a href="./journal.html">
+                            <a href="journal.html">
                                 <img class="card-img" src="./assets/images/journal.png" alt="journal">
                                 </a>
                                 <div class="card-img-overlay">
@@ -163,6 +164,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
     <script src="assets/javascript/app.js"></script>
   </body>
 </html>
