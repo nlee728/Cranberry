@@ -1,20 +1,32 @@
-// Dependencies
+// Requiring necessary npm packages
 var express = require("express");
 var bodyParser = require("body-parser");
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
-// Sets up the Express App
-var app = express();
+// Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
+var db = require("./models");
 
-// Sets up the Express app to handle data parsing
+// Creating express app and configuring middleware needed for authentication
+var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("app/public"));
+app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Routes
-require("./app/routes/api-routes.js")(app);
+// Requiring our routes
+require("./routes/htmlRoutes.js")(app);
+require("./routes/authRoutes.js")(app);
+require("./routes/apiRoutes.js")(app);
 
-// Starts the server to begin listening
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+// Syncing our database and logging a message to the user upon success
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  });
 });
